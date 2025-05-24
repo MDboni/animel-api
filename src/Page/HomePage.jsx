@@ -13,19 +13,19 @@ const HomePage = () => {
 const [item,setItem] = useState(null)
 const[allpets,setAllpets]=useState([])
 
-useEffect(()=>{
-  (async()=>{
-   const res = await PostCatagoris()
-   setItem(res.categories)
-  })()
-},[])
+      useEffect(()=>{
+        (async()=>{
+        const res = await PostCatagoris()
+        setItem(res.categories)
+        })()
+      },[])
 
-useEffect(()=>{
-  (async()=>{
-   const res = await Allpets()
-   setAllpets(res.pets)
-  })()
-},[])
+      useEffect(()=>{
+        (async()=>{
+        const res = await Allpets()
+        setAllpets(res.pets)
+        })()
+      },[])
 
 
 
