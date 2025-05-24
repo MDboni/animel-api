@@ -6,6 +6,7 @@ import Category from '../Component/Category'
 import Loader from '../Skeleton/Loader'
 import SortByPrice from '../Component/SortByPrice'
 import FetchAllPets from '../Component/FetchAllPets'
+import NoData from '../Component/NoData'
 
 const HomePage = () => {
 
@@ -37,8 +38,10 @@ useEffect(()=>{
         }
         
         <SortByPrice/>
+        {
+          item.length === 0 ? <NoData/> : <FetchAllPets pets={allpets}/>
+        }
         
-        <FetchAllPets pets={allpets}/>
 
     </Navbar>
   )

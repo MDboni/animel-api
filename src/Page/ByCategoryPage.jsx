@@ -5,10 +5,12 @@ import FetchAllPets from "../Component/FetchAllPets"
 import Category from "../Component/Category"
 import Navbar from './../Layout/Navbar';
 import SortByPrice from './../Component/SortByPrice';
+import NoData from "../Component/NoData"
+import Loader from "../Skeleton/Loader"
 
 const ByCategoryPage = () => {
   const [item, setItem] = useState([])        
-  const [categories, setCategories] = useState([]) 
+  const [categories, setCategories] = useState(null) 
 
   const { CategoryID } = useParams()
 
@@ -28,11 +30,16 @@ const ByCategoryPage = () => {
 
   return (
     <Navbar>
-        <Category item={categories}>
-                <SortByPrice />
-                <FetchAllPets pets={item} />
-        </Category>
+        {categories === null ? (
+          <Loader />
+        ) : (
+          <Category item={categories}>
+            <SortByPrice />
+            {item.length === 0 ? <NoData /> : <FetchAllPets pets={item} />}
+          </Category>
+        )}
     </Navbar>
+
   )
 }
 

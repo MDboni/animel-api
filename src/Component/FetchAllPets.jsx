@@ -8,11 +8,8 @@ const FetchAllPets = ({pets}) => {
     const [imgstore,setImgstore] = useState([])
 
     const imgHandeler = img => {
-        // const newImg = [...imgstore,img]
-        // setImgstore(newImg)
-
-        console.log('click',img);
-        
+        const newImg = [...imgstore,img]
+        setImgstore(newImg)    
     }
 
   return (
@@ -72,10 +69,19 @@ const FetchAllPets = ({pets}) => {
 
                     {/* Right Section (Empty Box for now) */}
                     <div className="hidden lg:block w-full lg:w-3/12 px-4 mt-8 lg:mt-10">
-                        <div className="h-full border border-red-200 p-4 rounded shadow-sm">
-                        
-                        <p className="text-center text-gray-500">Sidebar Content</p>
-                        </div>
+                       <div className="h-full  border border-red-200 p-4 rounded shadow-sm">
+                            <div className="grid grid-cols-2 gap-2">
+                                {imgstore.map((ite, i) => (
+                                <img
+                                    key={i}
+                                    src={ite}
+                                    alt=""
+                                    className="w-full h-24 object-cover transition-transform duration-500 hover:scale-90 rounded shadow"
+                                />
+                                ))}
+                            </div>
+                            </div>
+
                     </div>
              </div>
 
